@@ -3,22 +3,45 @@
         <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
         <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 	</head>
-	<body>
-		<a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" 
-				vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;">
-			<a-assets>
-				<a-asset-items id="slime" src="scene.gltf" ></a-asset-items>
-           	</a-assets>
-			<a-nft 
-				type='nft' 
-				url='marker/DQ4' 
+	<style>
+		.arjs-loader {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, 0.8);
+			z-index: 9999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	  
+		.arjs-loader div {
+			text-align: center;
+			font-size: 1.25em;
+			color: white;
+		}
+	</style>
+	<body style='margin : 0px; overflow: hidden;'>
+		<div class="arjs-loader">
+			<div>Loading, please wait...</div>
+		</div>
+		<a-scene
+			embedded vr-mode-ui='enabled: false;'
+			renderer="logarithmicDepthBuffer: true;"
+			arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+	
+			<a-nft
+				type='nft'
+				url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/amiu0309/amiu0309.github.io/master/imageTracking/marker/DQ4'
 				smooth='true'
 				smoothCount='10'
 				smoothTolerance='0.01'
 				smoothThreshold='5'>
 				<a-entity gltf-model="#slime" position="0 0 0" rotation="-90 0 0"></a-entity>
 			</a-nft>
-       		<a-entity camera></a-entity>
-   		</a-scene>
-  	</body>
+			<a-entity camera></a-entity>
+		</a-scene>
+	</body>
 </html>
